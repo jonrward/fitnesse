@@ -19,7 +19,7 @@
 	<property name="port" value="8001"/>
   
 	<target name="all" depends="unit_tests, acceptance_tests" description="Run this target any time you change code or acceptance tests. It will clean, then compile the source, run all the unit test and fitnesse acceptance tests."/>
-  
+
 	<target name="build" depends="clean, compile" description="clean, then compile the source"/>
   	
   	<target name="unit_tests" depends="clean, unit_test" description="builds code from scratch, runs all the unit tests"/>
@@ -313,5 +313,16 @@
 		     when deployed to Maven Central.  -->
 		<get src="${maven.central.url}/org/bouncycastle/bcprov-jdk16/1.46/bcprov-jdk16-1.46.jar" dest="${antlib.dir}/bcprov.jar" usetimestamp="true" verbose="true" />
 		<get src="${maven.central.url}/org/bouncycastle/bcpg-jdk16/1.46/bcpg-jdk16-1.46.jar" dest="${antlib.dir}/bcpg.jar" usetimestamp="true" verbose="true" />
+	</target>
+
+	<target name="mvn_install" depends="all" description="Run this to install into your local maven repo as fitnesse-use-JAVA_HOME">
+		<exec executable="mvn" failonerror="true">
+			<arg line="install:install-file"/>
+			<arg line="-DgroupId=org.fitnesse"/>
+			<arg line="-DartifactId=fitnesse-use-JAVA_HOME"/>
+			<arg line="-Dversion=20140201-use-JAVA_HOME"/>
+			<arg line="-Dfile=dist/fitnesse.jar"/>
+			<arg line="-Dpackaging=jar"/>
+		</exec>
 	</target>
 </project>
