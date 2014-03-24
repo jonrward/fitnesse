@@ -321,7 +321,7 @@
 			<arg line="-DgroupId=org.fitnesse"/>
 			<arg line="-DartifactId=fitnesse-use-JAVA_HOME"/>
 			<arg line="-Dversion=20140201-use-JAVA_HOME"/>
-			<arg line="-Dfile=dist/fitnesse.jar"/>
+			<arg line="-Dfile=dist/fitnesse-standalone.jar"/>
 			<arg line="-Dpackaging=jar"/>
 		</exec>
 	</target>
